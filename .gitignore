@@ -1,0 +1,71 @@
+# Documentos internos: no se versionan
+comercial/
+
+# Datos reales y copias de seguridad: nunca en el repositorio (es público)
+*.dump
+*.sql
+*.sql.gz
+backups/
+data/
+exports/
+*.xlsx
+*.csv
+!**/fixtures/**/*.csv
+!**/fixtures/**/*.xlsx
+!**/templates/**/*.csv
+!**/templates/**/*.xlsx
+!**/plantillas/**/*.csv
+!**/plantillas/**/*.xlsx
+
+# Lista privada del detector de fugas (nunca se sube)
+.leakcheck-denylist.txt
+
+# Claves, certificados y credenciales
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+*.kdbx
+id_rsa*
+id_ed25519*
+id_ecdsa*
+credentials.json
+google-services.json
+GoogleService-Info.plist
+*.db
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Django
+/staticfiles/
+/media/
+*.sqlite3
+
+# Frontend
+node_modules/
+
+# Editores y sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code (ajustes locales)
+.claude/settings.local.json

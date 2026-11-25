@@ -1,0 +1,12 @@
+#!/bin/sh
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Bloquea el push si algún commit que se va a subir contiene secretos, datos personales,
+# ficheros prohibidos o un email personal como autor. Git pasa las referencias por stdin.
+# Activación (una vez por clon): git config core.hooksPath .githooks
+for candidate in python3 python; do
+  if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c "import sys; sys.exit(sys.version_info < (3, 9))" >/dev/null 2>&1; then
+    exec "$candidate" "$(git rev-parse --show-toplevel)/scripts/check_leaks.py" --push
+  fi
+done
+echo "check_leaks: no se encuentra Python 3.9+; push bloqueado por seguridad." >&2
+exit 1

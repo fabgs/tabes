@@ -1,0 +1,11 @@
+#!/bin/sh
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Bloquea el commit si hay secretos, datos personales o ficheros prohibidos.
+# Activación (una vez por clon): git config core.hooksPath .githooks
+for candidate in python3 python; do
+  if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c "import sys; sys.exit(sys.version_info < (3, 9))" >/dev/null 2>&1; then
+    exec "$candidate" "$(git rev-parse --show-toplevel)/scripts/check_leaks.py" --staged
+  fi
+done
+echo "check_leaks: no se encuentra Python 3.9+; commit bloqueado por seguridad." >&2
+exit 1
