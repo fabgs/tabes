@@ -16,7 +16,8 @@ def generate_draw(round_id: int, *, seed: int | None = None, user: User) -> Draw
 ```
 
 ## 4. Interfaz
-URLs, vistas, plantillas, fragmentos HTMX, accesibilidad.
+URLs, vistas, plantillas, fragmentos HTMX.
+Accesibilidad (WCAG 2.2 AA): estructura y encabezados, dónde queda el foco tras cada actualización parcial, qué se anuncia a los lectores de pantalla y alternativa sin arrastrar.
 
 ## 5. Permisos y auditoría
 Quién puede hacer qué; qué acciones se registran.

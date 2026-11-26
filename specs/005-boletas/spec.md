@@ -5,7 +5,7 @@
 | Estado | borrador |
 | Fase | 1 |
 | Depende de | 000, 003 |
-| Última actualización | 2026-11-25 |
+| Última actualización | 2026-11-26 |
 
 ## 1. Objetivo
 Que el equipo de tab introduzca el resultado de cada debate (ganador o posiciones y puntos de orador) a partir de las boletas en papel, con validaciones que impidan resultados imposibles, un paso de confirmación y la posibilidad de corregir sin perder la versión anterior.
@@ -53,6 +53,7 @@ Miembro del equipo de tab. (En fase 2, el juez desde su móvil con el mismo form
 - **AC-005-07** — Dado un panel de 3 jueces con voto individual en el que 2 dan ganador a "A favor", cuando confirmo, entonces gana "A favor" con 2 votos de 3.
 - **AC-005-08** — Dada una ronda con 10 debates y 10 boletas confirmadas, entonces el estado muestra 10/10 y se puede marcar la ronda como completada.
 - **AC-005-09** — Dado un orador que aparece en dos turnos sin iron-man permitido, cuando guardo, entonces se rechaza.
+- **AC-005-10** — Dada una boleta con un punto de orador fuera de rango, cuando guardo, entonces el foco va a un resumen de errores que indica qué orador falla y qué rango se admite, con un enlace que lleva al campo.
 
 ## 7. Casos límite
 - Dos personas introduciendo a la vez la boleta del mismo debate: la segunda ve que ya existe un borrador.
@@ -61,6 +62,7 @@ Miembro del equipo de tab. (En fase 2, el juez desde su móvil con el mismo form
 
 ## 8. Requisitos no funcionales
 - Formulario utilizable solo con teclado (tabulación en orden lógico) para introducir rápido.
+- WCAG 2.2 AA. Cada error aparece en texto junto a su campo y en un resumen al principio del formulario.
 - Guardar una boleta < 500 ms.
 
 ## 9. Fuera de alcance
@@ -74,3 +76,4 @@ Miembro del equipo de tab. (En fase 2, el juez desde su móvil con el mismo form
 
 ## Historial
 - 2026-11-25 — creación.
+- 2026-11-26 — accesibilidad: AC-005-10 y requisito de errores accesibles.

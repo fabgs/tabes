@@ -64,6 +64,8 @@ Reglas: cada persona elige qué categorías recibe (por defecto todas); los avis
 
 React Native + **Expo** (TypeScript) · Expo Router · TanStack Query (caché y modo sin conexión) · expo-notifications · expo-secure-store (tokens) · i18n · Sentry · **EAS Build / Submit / Update** (compilación en la nube, envío a tiendas y actualizaciones OTA de JavaScript sin pasar revisión). Cliente de la API generado a partir del esquema OpenAPI del backend. Pruebas: Jest + React Native Testing Library; flujos e2e con Maestro.
 
+**Accesibilidad**: la app sigue el principio XIII de la [constitución](constitucion.md) (WCAG 2.2 AA): etiquetas para VoiceOver y TalkBack en todos los controles, respeto del tamaño de texto del sistema, objetivos táctiles de 44 × 44 pt en iOS y 48 × 48 dp en Android, y el cronómetro avisa también con vibración, no solo con sonido o color.
+
 El repo `tabes-app` ([github.com/fabgs/tabes-app](https://github.com/fabgs/tabes-app)) será público con licencia **MIT** (solo dependencias permisivas) y tendrá su propio `AGENTS.md`/`CLAUDE.md` con las mismas reglas SDD y una carpeta `specs/`.
 
 ## 6. Publicación en tiendas

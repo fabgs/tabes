@@ -5,7 +5,7 @@
 | Estado | borrador |
 | Fase | 1 |
 | Depende de | 003, 004, 005, 006 |
-| Última actualización | 2026-11-25 |
+| Última actualización | 2026-11-26 |
 
 ## 1. Objetivo
 Ofrecer una web pública por torneo, sin necesidad de cuenta, donde equipos, jueces y público consulten el draw, las mociones, los resultados y las clasificaciones en cuanto el tab decida publicarlos, que aguante a todo el torneo consultándola a la vez desde el móvil y que pueda proyectarse en pantalla.
@@ -30,8 +30,8 @@ Ofrecer una web pública por torneo, sin necesidad de cuenta, donde equipos, jue
 - **RF-007-06** — El sistema deberá mostrar los resultados publicados por ronda (ganador o puestos) y, según la configuración del torneo, las puntuaciones de orador: nunca, al finalizar el torneo o en directo.
 - **RF-007-07** — Si una ronda es silenciosa, sus resultados no se mostrarán ni influirán en la clasificación pública hasta que el tab los publique.
 - **RF-007-08** — El sistema deberá mostrar los nombres de las personas según la configuración del torneo: completo, iniciales u ocultos.
-- **RF-007-09** — El sistema deberá ofrecer un modo proyector para draw y mociones: letra grande, alto contraste, paso automático de páginas si no cabe y un código QR hacia la web pública.
-- **RF-007-10** — Cuando se publique algo nuevo, las páginas abiertas deberán mostrar un aviso "hay una actualización" en menos de 30 s sin recargar a mano.
+- **RF-007-09** — El sistema deberá ofrecer un modo proyector para draw y mociones: letra grande, alto contraste, paso automático de páginas si no cabe, un control para pausarlo y reanudarlo (también con la barra espaciadora) y un código QR hacia la web pública.
+- **RF-007-10** — Cuando se publique algo nuevo, las páginas abiertas deberán mostrar un aviso "hay una actualización" en menos de 30 s sin recargar a mano. El aviso se anunciará a los lectores de pantalla sin mover el foco.
 - **RF-007-11** — El sistema deberá permitir que el torneo no se indexe en buscadores.
 - **RF-007-12** — El sistema deberá ofrecer una versión imprimible del draw.
 
@@ -49,6 +49,8 @@ Ofrecer una web pública por torneo, sin necesidad de cuenta, donde equipos, jue
 - **AC-007-06** — Dada la prueba de carga de 500 usuarios virtuales consultando el draw recién publicado durante 2 minutos, entonces el p95 es < 500 ms y no hay errores.
 - **AC-007-07** — La primera carga de la página del draw pesa menos de 200 KB (sin contar fuentes cacheadas).
 - **AC-007-08** — Dado el modo proyector con 15 debates, entonces el draw se pagina solo y cada página es legible a 5 metros (tamaño de letra mínimo definido en el plan).
+- **AC-007-09** — Dado el modo proyector paginando solo, cuando pulso la barra espaciadora o el botón de pausa, entonces se queda en la página actual hasta que lo reanudo.
+- **AC-007-10** — Dada la página del draw abierta con un lector de pantalla, cuando el tab publica una actualización, entonces se anuncia "Hay una actualización" sin perder la posición de lectura.
 
 ## 7. Casos límite
 - Torneo marcado como no público: todas sus páginas devuelven "no encontrado".
@@ -58,7 +60,8 @@ Ofrecer una web pública por torneo, sin necesidad de cuenta, donde equipos, jue
 ## 8. Requisitos no funcionales
 - 250 usuarios simultáneos como mínimo; diseño y prueba para 500.
 - Legible y usable en móvil de 360 px de ancho, sin desplazamiento horizontal.
-- Accesibilidad AA en contraste y navegación.
+- WCAG 2.2 AA. Las tablas de draw y clasificaciones tienen encabezados de fila y columna asociados.
+- Modo proyector con contraste de al menos 7:1, porque los proyectores lo reducen.
 
 ## 9. Fuera de alcance
 - Páginas privadas para cada participante (fase 2, con enlaces privados).
@@ -72,3 +75,4 @@ Ofrecer una web pública por torneo, sin necesidad de cuenta, donde equipos, jue
 
 ## Historial
 - 2026-11-25 — creación.
+- 2026-11-26 — accesibilidad: RF-007-09 y RF-007-10 ampliados, AC-007-09 y AC-007-10.

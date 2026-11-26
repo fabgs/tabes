@@ -74,7 +74,8 @@ Apps: `core`, `tournaments`, `participants`, `conflicts`, `draw`, `allocation`, 
 - **Base de datos**: toda invariante que se pueda expresar como `UNIQUE`/`CHECK` va en la BD (ver §6 del modelo de datos). Operaciones de tab dentro de `transaction.atomic`. Una migración por cambio lógico; nunca edites una migración ya desplegada.
 - **Auditoría**: los servicios que cambian el estado del torneo llaman a `audit.log(...)`.
 - **Aleatoriedad**: nunca `random` global; usa `random.Random(seed)` y guarda la semilla.
-- **Frontend**: HTMX para peticiones parciales, Alpine para estado local, SortableJS para arrastrar y soltar. Sin frameworks SPA. Toda interacción de arrastrar tiene alternativa con teclado.
+- **Frontend**: HTMX para peticiones parciales, Alpine para estado local, SortableJS para arrastrar y soltar. Sin frameworks SPA. Toda interacción de arrastrar tiene alternativa con teclado y con clics sueltos.
+- **Accesibilidad**: WCAG 2.2 AA ([constitución](docs/constitucion.md), principio XIII). HTML semántico y elementos nativos antes que ARIA; nada depende solo del color; todo se usa con teclado y con el foco visible; cada fragmento HTMX anuncia el cambio (`aria-live`) y deja el foco en un sitio lógico; contraste comprobado también con los colores de cada organización.
 - **Tests**: pytest + factory_boy; Hypothesis en motores; nombres `test_<comportamiento_esperado>`; nada de tests que dependan del orden o de la hora real.
 - **Dependencias**: no añadas paquetes sin ADR en `docs/arquitectura.md`. Comprueba la licencia de cada paquete: en la web, compatible con AGPL-3.0 (MIT, BSD, Apache-2.0, ISC, PSF, LGPL, GPL-3.0); nada privativo, GPL-2.0-only ni SSPL.
 - **Cabecera de licencia**: todo fichero de código nuevo empieza con `# SPDX-License-Identifier: AGPL-3.0-or-later` (o el comentario equivalente del lenguaje).
@@ -120,5 +121,6 @@ El repositorio es **público**. Una fuga no se arregla borrándola: queda en el 
 - [ ] `python scripts/check_leaks.py --staged` sin hallazgos.
 - [ ] Migraciones generadas y revisadas.
 - [ ] Textos de UI traducibles.
+- [ ] Accesibilidad: comprobación automática sin errores y páginas nuevas revisadas con teclado y lector de pantalla.
 - [ ] `tasks.md`, estado de la spec y `PLAN.md` actualizados; `modelo-datos.md`/`arquitectura.md` si cambiaron.
 - [ ] Flujo probado a mano en local (o con Playwright) y descrito en el PR.

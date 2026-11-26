@@ -29,7 +29,7 @@ Reglas del dominio, rangos, cálculos.
 Situaciones raras que deben tener un comportamiento definido.
 
 ## 8. Requisitos no funcionales
-Rendimiento, accesibilidad, privacidad… con números.
+Rendimiento, privacidad… con números. Accesibilidad: WCAG 2.2 AA siempre (constitución, principio XIII); aquí solo lo específico de esta funcionalidad.
 
 ## 9. Fuera de alcance
 Lo que explícitamente no hace esta spec.

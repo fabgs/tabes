@@ -47,3 +47,13 @@ TabES es software libre: la plataforma web, bajo **AGPL-3.0-or-later** (ver `LIC
 - Se puede reutilizar código de proyectos compatibles (incluido Tabbycat, AGPL-3.0) **conservando su aviso de copyright** y anotándolo en `NOTICE`.
 - **Nunca** se suben al repositorio secretos, copias de la base de datos ni datos reales de participantes. Los datos de ejemplo y los fixtures son inventados.
 - Las aportaciones externas se aceptan bajo la misma licencia, con firma DCO (`git commit -s`).
+
+## XIII. Accesible para todas las personas
+Toda la interfaz (zona de tab, web pública, modo proyector, correos y app) cumple **WCAG 2.2 nivel AA**. Entre debatientes, jueces y público hay personas con discapacidad visual, auditiva, motora o cognitiva, y también personas que usan el móvil con una mano, con poca luz o a cinco metros de un proyector. Los cuatro principios, aplicados a TabES:
+
+- **Perceptible: se puede ver, oír o tocar.** Contraste mínimo de 4,5:1 en texto y de 3:1 en controles y foco, también con los colores de cada organización. La información nunca depende solo del color: un conflicto se marca con color, icono y texto. Las imágenes con contenido llevan texto alternativo. Todo se lee con zoom al 200 % y en 320 px de ancho sin desplazamiento horizontal.
+- **Operable: se usa de muchas formas.** Todo funciona con teclado, sin trampas de foco y con el foco siempre visible y sin tapar. Lo que se hace arrastrando también se hace con clics o toques sueltos (seleccionar → colocar). Los objetivos táctiles miden al menos 24 × 24 px. Lo que se mueve o cambia solo (paginación del proyector, avisos) se puede pausar. Si la sesión va a caducar, se avisa con tiempo para ampliarla sin perder lo escrito.
+- **Comprensible: se entiende.** Lenguaje claro y términos del [glosario](glosario.md). Cada campo tiene etiqueta e instrucciones; cada error dice qué falla, dónde y cómo arreglarlo. Las acciones con consecuencias (confirmar una boleta, publicar) se confirman y se pueden revertir. La navegación es igual en todas las páginas y no se pide dos veces el mismo dato. Iniciar sesión no exige resolver acertijos y admite gestores de contraseñas y pegar.
+- **Robusto: lo interpretan bien navegadores y lectores de pantalla.** HTML semántico y válido; elementos nativos antes que ARIA. Los componentes propios exponen nombre, rol y estado. Cada actualización parcial de la página anuncia el cambio a los lectores de pantalla sin robar el foco y deja el foco en un sitio lógico.
+
+Se verifica en cada spec con interfaz: comprobación automática en los tests e2e y revisión manual con teclado y lector de pantalla (NVDA en Windows, VoiceOver en macOS e iOS, TalkBack en Android). Un fallo de accesibilidad es un fallo, no una mejora pendiente.

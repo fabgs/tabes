@@ -5,7 +5,7 @@
 | Estado | borrador |
 | Fase | 1 |
 | Depende de | 002, 003 |
-| Última actualización | 2026-11-25 |
+| Última actualización | 2026-11-26 |
 
 ## 1. Objetivo
 Proponer automáticamente qué jueces juzgan cada debate (presidente, vocales y jueces en prácticas) y en qué sala se celebra, respetando conflictos y priorizando a los mejores jueces en los debates más importantes; y permitir ajustarlo arrastrando y soltando.
@@ -29,8 +29,8 @@ Miembro del equipo de tab (y, en fase 2, el CA).
 - **RF-004-06** — Si no hay jueces suficientes o válidos, el sistema deberá dejar huecos en los debates menos importantes primero y avisar de cada hueco.
 - **RF-004-07** — El sistema deberá mostrar un tablero con una fila por debate (equipos, posición, bracket, sala, importancia) y huecos de presidente, vocales y prácticas, más una lista de jueces sin asignar filtrable y ordenable por nota.
 - **RF-004-08** — El sistema deberá permitir arrastrar un juez a un hueco libre, a un hueco ocupado (intercambio) o a la lista de sin asignar, guardando cada movimiento automáticamente.
-- **RF-004-09** — El sistema deberá marcar al momento cada juez en conflicto duro (rojo) y cada aviso blando (naranja: ya vio al equipo, misma institución que otro miembro del panel), con el motivo al pasar el ratón o enfocar.
-- **RF-004-10** — Toda acción de arrastrar deberá poder hacerse también con teclado (seleccionar juez → seleccionar hueco).
+- **RF-004-09** — El sistema deberá marcar al momento cada juez en conflicto duro (rojo) y cada aviso blando (naranja: ya vio al equipo, misma institución que otro miembro del panel), con icono y texto además del color, y con el motivo visible al pasar el ratón, al enfocar o al tocar.
+- **RF-004-10** — Toda acción de arrastrar deberá poder hacerse también sin arrastrar, con teclado y con clics o toques sueltos (seleccionar juez → seleccionar hueco), y cada movimiento deberá anunciarse a los lectores de pantalla junto con los avisos que genere.
 - **RF-004-11** — Si otro usuario ha cambiado la asignación mientras tanto, el sistema deberá avisar y recargar en vez de sobrescribir.
 - **RF-004-12** — El sistema deberá asignar salas automáticamente: las de mayor prioridad a los debates más importantes, respetando las necesidades de accesibilidad de equipos y jueces, y permitir cambiar la sala de un debate a mano.
 - **RF-004-13** — Los cambios manuales después de confirmar el draw deberán registrarse en auditoría.
@@ -49,6 +49,7 @@ Miembro del equipo de tab (y, en fase 2, el CA).
 - **AC-004-05** — Dado el tablero abierto por dos usuarios, cuando el usuario A mueve un juez y después el B mueve otro en el mismo debate, entonces B recibe un aviso de cambio y la vista se recarga sin perder el movimiento de A.
 - **AC-004-06** — Dado un equipo que necesita sala accesible, cuando se asignan salas, entonces su debate recibe una sala marcada como accesible si hay alguna libre.
 - **AC-004-07** — Usando solo el teclado, puedo mover un juez de la lista de sin asignar al hueco de presidente de un debate.
+- **AC-004-08** — Sin arrastrar, con un clic en un juez de la lista de sin asignar y otro en un hueco de vocal, el juez pasa a ese debate; si tiene conflicto, un lector de pantalla anuncia el movimiento y el motivo del conflicto.
 
 ## 7. Casos límite
 - Más debates que salas disponibles: debates sin sala con aviso.
@@ -59,6 +60,7 @@ Miembro del equipo de tab (y, en fase 2, el CA).
 - Asignación automática de 50 debates y 150 jueces en < 5 s.
 - Cada movimiento en el tablero se refleja en < 300 ms.
 - Usable en portátil de 13"; en tablet, deseable.
+- WCAG 2.2 AA; el estado de cada juez y de cada debate no depende solo del color.
 
 ## 9. Fuera de alcance
 - Nota de juez ajustada por feedback (fase 2, spec 102).
@@ -71,3 +73,4 @@ Miembro del equipo de tab (y, en fase 2, el CA).
 
 ## Historial
 - 2026-11-25 — creación.
+- 2026-11-26 — accesibilidad: RF-004-09 y RF-004-10 ampliados, AC-004-08.

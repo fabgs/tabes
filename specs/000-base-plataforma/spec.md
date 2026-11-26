@@ -5,7 +5,7 @@
 | Estado | borrador |
 | Fase | 1 |
 | Depende de | — |
-| Última actualización | 2026-11-25 |
+| Última actualización | 2026-11-26 |
 
 ## 1. Objetivo
 Dejar lista la base sobre la que se construye todo: acceso seguro del equipo de tab, creación de torneos a partir de los formatos de ADA (Académico y BP) con reglas configurables, gestión de rondas, registro de auditoría y un entorno publicado en internet con copias de seguridad.
@@ -36,8 +36,11 @@ Dejar lista la base sobre la que se construye todo: acceso seguro del equipo de 
 - **RF-000-12** — El sistema deberá estar accesible por HTTPS y hacer copias de seguridad automáticas diarias, y cada hora durante los días de torneo, en una ubicación distinta del servidor.
 - **RF-000-13** — El sistema deberá mostrar cada página (zona de tab, web pública y correos) con la identidad de la organización a la que pertenece: nombre visible, logotipo, colores, favicon, email de contacto y enlaces legales. Ningún texto ni imagen de una organización concreta estará fijado en el producto.
 - **RF-000-14** — Cuando llegue una petición por el dominio propio de una organización, el sistema deberá identificar esa organización. Si no tiene dominio propio, la identificará por su ruta (`/o/<slug>/`).
-- **RF-000-15** — Si los colores configurados no alcanzan el contraste mínimo AA, el sistema deberá avisar al guardarlos.
+- **RF-000-15** — El sistema deberá garantizar el contraste AA con cualquier color de la organización: elegirá automáticamente texto blanco o negro sobre cada color de marca y, si un color no contrasta lo suficiente con el fondo de la página, no lo usará para texto, enlaces ni bordes de controles (usará un tono que sí contraste). Al guardar los colores, avisará de cada ajuste.
 - **RF-000-16** — El sistema deberá mostrar en el pie de todas las páginas un aviso discreto "Funciona con TabES", con enlace al código fuente y a su licencia. La AGPL obliga a ofrecer el código a los usuarios de una versión que se use a través de la red. El enlace apuntará al código de la versión desplegada (configurable si la instalación usa una versión modificada).
+- **RF-000-17** — Toda la interfaz deberá cumplir WCAG 2.2 nivel AA ([constitución, principio XIII](../../docs/constitucion.md)). Esta spec fija la base común que heredan las demás: idioma de la página declarado, título único por página, enlace "Saltar al contenido", foco siempre visible, regiones de cabecera, navegación, contenido y pie, y anuncio a los lectores de pantalla de cada actualización parcial y de cada mensaje de éxito o error.
+- **RF-000-18** — Cuando la sesión vaya a caducar, el sistema deberá avisar al menos 2 minutos antes y permitir ampliarla sin perder lo que se esté escribiendo.
+- **RF-000-19** — El inicio de sesión deberá admitir gestores de contraseñas y pegar en los campos, sin pruebas que exijan resolver acertijos, cálculos o reconocer imágenes.
 
 ## 5. Reglas de negocio y validaciones
 - `score_min < score_max`; `score_step > 0` y `(score_max − score_min)` múltiplo del paso.
@@ -58,6 +61,12 @@ Dejar lista la base sobre la que se construye todo: acceso seguro del equipo de 
 - **AC-000-09** — Dadas dos organizaciones con logos y colores distintos, cuando abro la web pública de cada una por su dominio, entonces cada una muestra solo su nombre, logo y colores.
 - **AC-000-11** — Dada cualquier página pública o de tab, cuando miro el pie, entonces aparece "Funciona con TabES" con enlace al repositorio del código fuente y a la licencia AGPL.
 - **AC-000-10** — Dada una búsqueda de "ADA" y "Alicante" en el código fuente y las plantillas (excluyendo datos de demo, fixtures y documentación), entonces no aparece ninguna coincidencia.
+- **AC-000-12** — Dadas todas las páginas de esta spec (inicio de sesión, restablecer contraseña, lista y creación de torneos, reglas, rondas y auditoría), cuando pasa la comprobación automática de accesibilidad, entonces no hay ningún incumplimiento de WCAG 2.2 A ni AA.
+- **AC-000-13** — Usando solo el teclado, puedo iniciar sesión, crear un torneo con la plantilla "Académico" y cambiar la duración de un turno, viendo en todo momento dónde está el foco.
+- **AC-000-14** — Dada una organización con color principal amarillo claro (`#FFE14D`), cuando guardo sus colores, entonces los botones de ese color llevan texto negro, los enlaces usan un tono con contraste de al menos 4,5:1 sobre el fondo y se muestra un aviso que explica el ajuste.
+- **AC-000-15** — Dada la página de reglas del torneo a 320 px de ancho, entonces se lee y se usa entera sin desplazamiento horizontal.
+- **AC-000-16** — Dado un formulario de reglas a medio rellenar y una sesión que caduca en 2 minutos, cuando aparece el aviso y elijo seguir conectado, entonces la sesión se amplía y no se pierde nada de lo escrito.
+- **AC-000-17** — Con NVDA y Firefox, cuando guardo las reglas del torneo, entonces se anuncia "Reglas guardadas" (o el error concreto) y el foco no salta al principio de la página.
 
 ## 7. Casos límite
 - Dos administradores editando las reglas a la vez: el segundo recibe aviso de que han cambiado.
@@ -67,7 +76,7 @@ Dejar lista la base sobre la que se construye todo: acceso seguro del equipo de 
 ## 8. Requisitos no funcionales
 - Páginas del tab responden en < 500 ms (p95) con un torneo de 200 equipos.
 - Copias: RPO ≤ 1 h en días de torneo; RTO ≤ 1 h.
-- Accesible por teclado; contraste AA.
+- WCAG 2.2 AA en todas las páginas (RF-000-17).
 
 ## 9. Fuera de alcance
 - Roles diferenciados (admin, tab, CA, juez): fase 2. En fase 1 todo usuario del tab puede todo.
@@ -84,3 +93,4 @@ Dejar lista la base sobre la que se construye todo: acceso seguro del equipo de 
 
 ## Historial
 - 2026-11-25 — creación.
+- 2026-11-26 — accesibilidad WCAG 2.2 AA: RF-000-15 reescrito, RF-000-17 a 19 y AC-000-12 a 17.

@@ -93,6 +93,7 @@ Dentro de cada app: `models.py`, `services/` (casos de uso con transacciones y a
 - **HTMX**: formularios y tablas se actualizan por fragmentos; el tablero de jueces usa SortableJS y envía cada movimiento al servidor (autoguardado); si el `version` no coincide, se avisa y se recarga.
 - **Publicación**: las vistas públicas se cachean en Redis por torneo y ronda; publicar o despublicar invalida la caché. Las páginas incluyen sondeo ligero (HTMX cada 30 s) para mostrar "hay una versión nueva".
 - **Configuración**: listas de reglas en `JSONB` validadas con esquemas (pydantic) al guardar.
+- **Accesibilidad (WCAG 2.2 AA)**: componentes base en plantillas (campo de formulario con error, tabla, aviso, diálogo, selección por clic para el tablero) que ya cumplen y se reutilizan en todas las apps. Una región `aria-live` común recibe los mensajes de HTMX; tras cada intercambio, el foco va al elemento nuevo cuando la acción lo pide. El tema de cada organización calcula el color del texto sobre sus colores. Comprobación automática en los tests e2e de Playwright con una herramienta pendiente de ADR (p. ej. axe-core, MPL-2.0), que se decide antes de la spec 000.
 
 ## 5. Algoritmos (enfoque)
 
